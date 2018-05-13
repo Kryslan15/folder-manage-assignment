@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## How to run - Step by step instruction
+
+1. Install NodeJS, latest version
+	`https://nodejs.org/en/`
+
+2. Clone repository or download zip from github.
+	`https://github.com/Kryslan15/folder-manage-assignment.git`
+
+3. Open command prompt (“cmd”)  > change directory to project location
+
+4. Type the command
+	`npm install`
+
+5. After the packages are installed, use the following command to run the angular app on the server.
+	`ng serve`
+
+6. In browser, (chrome preferable), go to
+	`http://localhost:4200/`
+
+7. The app should run.
