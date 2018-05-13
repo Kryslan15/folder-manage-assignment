@@ -1,0 +1,33 @@
+<div class="app-area">
+    <h5>Directory Structure Implementation</h5>    
+    <div class="form-inline">
+        <a title="Back"><i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i></a>
+        <a title="Forward"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i></a>
+        <a title="Up"><i class="fa fa-arrow-circle-up fa-lg" aria-hidden="true"></i></a>
+        <input class="form-control" style="width:90%;" type="text" [(ngModel)]="folderPath"/>
+        <a title="Go"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>  
+        </div >
+    
+    <div class="row controls">
+        <div class="col-md-1"><a><i class="fa fa-folder-open fa-lg"></i><br>New Folder</a></div>
+        <div class="col-md-1"><a><i class="fa fa-trash fa-lg"></i><br>Delete</a></div>
+    </div>  
+    
+    <div class="nav-area">
+        <ul style="list-style-type: none;">
+            <ng-template #recursiveList let-list>
+                <li *ngFor="let item of list">
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                    <a>{{item.name}}</a>
+                <ul style="list-style-type: none;" *ngIf="item.children.length > 0">
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+                </ul>
+                </li>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+        </ul>
+    </div>    
+    <div class="content-area">
+        content-area works!
+    </div>
+</div>

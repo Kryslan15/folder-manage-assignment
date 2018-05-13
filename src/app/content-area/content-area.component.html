@@ -1,0 +1,11 @@
+<div class="content-area">
+  <span *ngIf= "currentDir.children.length===0 else showContent">This folder is empty</span>
+
+  <ng-template #showContent>
+    <div *ngFor = "let item of currentDir.children; index as i " [attr.data-index]="i">
+      <a (click)="changeDir(i)">
+        <i class="fa fa-folder fa-2x" aria-hidden="true">{{item.name}}</i>
+      </a>    
+    </div>
+  </ng-template>
+</div>
