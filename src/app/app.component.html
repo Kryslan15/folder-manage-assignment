@@ -1,8 +1,8 @@
 
 <div class="app-area">
     <h5>Directory Structure Implementation</h5>
-    <app-folder-path [dirPath]="dirPath"></app-folder-path>
+    <app-folder-path [dirPath]="dirPath" [folderList]="folderList" [revisit]="revisit" [visitedList]="visitedList" (pathUpdated)="onPathUpdate($event)" (updatedVisitList)="onIndexUpdate($event)"></app-folder-path>
     <app-controls (newFolderCreated)="updateList()"></app-controls>
     <app-nav class="nav-area" [folderList]="folderList" ></app-nav>
-    <app-content-area class="content-area" [folderList]="folderList" [visitedList]="visitedList" (updatedVisitList)="onIndexUpdate($event)" (pathUpdated)="onPathUpdate($event)"></app-content-area>
+    <app-content-area class="content-area" [dirPath]="dirPath" [currentDir]="currentDir" [folderList]="folderList" [visitedList]="visitedList" (updatedVisitList)="onIndexUpdate($event)"  (pathUpdated)="onPathUpdate($event)"></app-content-area>
 </div>

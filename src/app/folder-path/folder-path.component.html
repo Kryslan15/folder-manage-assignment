@@ -1,7 +1,6 @@
 <div class="form-inline">
-    <a title="Back" (click)="navBack()"><i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i></a>
-    <a title="Forward" (click)="navForward()"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i></a>
-    <a title="Up" (click)="navUp()"><i class="fa fa-arrow-circle-up fa-lg" aria-hidden="true"></i></a>
-    <input class="form-control" style="width:90%;" type="text" [(ngModel)]="dirPath"/>
-    <a title="Go" (click)="goTo()"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>  
+    <button title="Back" (click)="navBack()" [disabled]="!visitedList.length>0"><i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i></button>
+    <button title="Forward" (click)="navForward()" [disabled]="!revisit.length>0"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i></button>
+    <button title="Up" (click)="navBack()" [disabled]="!visitedList.length>0"><i class="fa fa-arrow-circle-up fa-lg" aria-hidden="true"></i></button>
+    <input class="form-control" style="width:90%;" type="text" [(ngModel)]="dirPath"/> 
   </div >

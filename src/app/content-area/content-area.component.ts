@@ -8,23 +8,23 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 })
 export class ContentAreaComponent implements OnInit {
   @Input() folderList: {name: string, children: ArrayType};
+  @Input() currentDir:{name: string, children: ArrayType};
+  @Input() dirPath: string;
   @Input() visitedList: number[];
   @Output() pathUpdated = new EventEmitter<{dirPath: string, currentDir: any}>();
-  @Output() updatedVisitList = new EventEmitter<number[]>();
+  @Output() updatedVisitList = new EventEmitter<{visitedList :number[], revisit: number[]}>();
 
-  dirPath: string;
-  currentDir:  {name: string, children: ArrayType};
-  childKeys: string[];
+  revisit =[];
   ngOnInit() {
-    this.currentDir = this.folderList;
-    this.dirPath = this.currentDir.name;
+    console.log(this.dirPath);
   }
   changeDir (index: number) {
-    this.currentDir = Object.assign({}, this.currentDir.children[index]);;    
+    this.revisit =[];
+    this.currentDir = Object.assign({}, this.currentDir.children[index]);  
     this.dirPath = this.dirPath + this.currentDir.name + "/" ;
     this.pathUpdated.emit({dirPath: this.dirPath, currentDir: this.currentDir});
     this.visitedList.push(index);
-    this.updatedVisitList.emit(this.visitedList);
+    this.updatedVisitList.emit({visitedList: this.visitedList, revisit: this.revisit});
   }
 
 }

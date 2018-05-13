@@ -8,136 +8,55 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 })
 export class AppComponent {
   title = 'app';
-  //public folderList = [{ title: "/", children: []}];
-  // public folderList = 
-  //   { title: "/",
-  //   children: [
-  //   {
-  //     title: 'childless',
-  //     children: []
-  //   },
-  //   {
-  //     title: 'great grandparent',
-  //     children: [
-  //       {
-  //         title: 'childless grandsibiling',
-  //         children: []
-  //       },
-  //       {
-  //         title: 'grandparent',
-  //         children: [
-  //           {
-  //             title: 'childless sibiling',
-  //             children: []
-  //           },
-  //           {
-  //             title: 'another childless sibiling',
-  //             children: []
-  //           },
-  //           {
-  //             title: 'parent',
-  //             children: [
-  //               {
-  //                 title: 'child',
-  //                 children: []
-  //               },
-  //               {
-  //                 title: 'another child',
-  //                 children: []
-  //               },
-  //             ]
-  //           },
-  //           {
-  //             title: 'another parent',
-  //             children: [
-  //               {
-  //                 title: 'child',
-  //                 children: []
-  //               },
-  //             ]
-  //           },
-  //         ]
-  //       },
-  //       {
-  //         title: 'another grandparent',
-  //         children: [
-  //           {
-  //             title: 'parent',
-  //             children: [
-  //               {
-  //                 title: 'child',
-  //                 children: []
-  //               },
-  //               {
-  //                 title: 'another child',
-  //                 children: []
-  //               },
-  //               {
-  //                 title: 'a third child',
-  //                 children: []
-  //               },
-  //               {
-  //                 title: 'teen mother',
-  //                 children: [
-  //                   {
-  //                     title: 'accident',
-  //                     children: [
-  //                       {
-  //                         title: 'childrtest',
-  //                         children: []
-  //                       },
-  //                       {
-  //                         title: 'another chiltestd',
-  //                         children: []
-  //                       },]
-  //                   },
-  //                 ]
-  //               },
-  //             ]
-  //           },
-  //         ]
-  //       },
-  //     ]
-  //   },
-  // ]}];
+  public folderList = { name: "/", children: []};
+  
   public visitedList = [];
-  public folderList =  {
-        "name": "/",
-        "children": [
-           {
-              "name": "child1",
-              "children": []
-          },
-          {
-              "name": "child2",
-              "children":[]
-          },
-          {
-              "name": "child3",
-              "children": [
-              {                
-                  "name": "child31",
-                  "children":[]
-              }]
+  public revisit = [];
+  // public folderList =  {
+  //       "name": "/",
+  //       "children": [
+  //          {
+  //             "name": "child1",
+  //             "children": []
+  //         },
+  //         {
+  //             "name": "child2",
+  //             "children":[]
+  //         },
+  //         {
+  //             "name": "child3",
+  //             "children": [
+  //             {                
+  //                 "name": "child31",
+  //                 "children":[]
+  //             }]
             
-          }]
+  //         }]
         
-    };
+  //   };
   
   dirPath = this.folderList.name;
   currentDir = Object.assign({}, this.folderList);
-  
-  onPathUpdate(value: {path: string, currentDir:any}) {
-    this.dirPath = value.path;
+  newFolderTitle: string;
+  onPathUpdate(value: {dirPath: string, currentDir:any}) {
+    this.dirPath = value.dirPath;
     this.currentDir = Object.assign({}, value.currentDir);
+   
   }
 
-  onIndexUpdate(visitedList: string[]) {
-    this.visitedList = visitedList;
+  onIndexUpdate(value: {visitedList: string[], revisit: string[]}) {
+    this.visitedList = value.visitedList;
+    this.revisit = value.revisit;
+    console.log(this.visitedList);
   }
 
   updateList(){
-    this.currentDir.children.push({"name":"New Folder", "children" :[]});
+    if(this.currentDir.name == "/"){
+      this.newFolderTitle = "Folder"+"_" +this.currentDir.children.length;
+    } else {
+      this.newFolderTitle = this.currentDir.name +"_" +this.currentDir.children.length;
+    }    
+    this.currentDir.children.push({"name":this.newFolderTitle , "children" :[]});
   }
    
 }
