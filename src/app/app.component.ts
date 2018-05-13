@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -12,28 +11,6 @@ export class AppComponent {
   
   public visitedList = [];
   public revisit = [];
-  // public folderList =  {
-  //       "name": "/",
-  //       "children": [
-  //          {
-  //             "name": "child1",
-  //             "children": []
-  //         },
-  //         {
-  //             "name": "child2",
-  //             "children":[]
-  //         },
-  //         {
-  //             "name": "child3",
-  //             "children": [
-  //             {                
-  //                 "name": "child31",
-  //                 "children":[]
-  //             }]
-            
-  //         }]
-        
-  //   };
   
   dirPath = this.folderList.name;
   currentDir = Object.assign({}, this.folderList);
